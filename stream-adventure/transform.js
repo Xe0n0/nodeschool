@@ -4,10 +4,6 @@ write = function(buf) {
   this.queue(buf.toString().toUpperCase());
 };
 
-end = function() {
-  this.queue(null);
-};
-
-tr = through(write, end);
+tr = through(write);
 
 process.stdin.pipe(tr).pipe(process.stdout);
