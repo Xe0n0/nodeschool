@@ -5,12 +5,10 @@ map = require('through2-map');
 
 tr = require('trumpet')();
 
-process.stdin.pipe(tr);
-
 stream = tr.select('.loud').createStream();
 
 stream.pipe(map(function(chunck) {
   return chunck.toString().toUpperCase();
 })).pipe(stream);
 
-tr.pipe(process.stdout);
+process.stdin.pipe(tr).pipe(process.stdout);
