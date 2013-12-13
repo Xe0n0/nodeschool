@@ -1,4 +1,4 @@
-process.stdin.on 'data', (buf) ->
+process.stdin.once 'data', (buf) ->
   len = buf.length
   array = Uint8Array ArrayBuffer len
   for i in [0..len - 1]
